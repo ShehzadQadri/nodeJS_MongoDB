@@ -1,14 +1,15 @@
-const express = require("express");
+import express from 'express';
 
 const router = express.Router();
 
-router.use('/1', (req, res) => {
+router.get('/', (req, res) => {
+    res.send('Hello you are at root of userfolderapi link');
+})
+
+router.get('/abc', (req, res) => {
     // res.send(new Date());
-    res.send('shehzad ap user folder me agye ho');
+    console.log('Hello you are at root of userfolderapi link');
+    res.send('Shehzad ap user folder me agye ho')
 });
 
-
-
-console.log('shehzad user folder agye hain ap')
-
-module.exports = router
+export default router;
