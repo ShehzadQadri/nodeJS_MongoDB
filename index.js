@@ -4,7 +4,7 @@ import os from "os";
 import net from 'net';
 import open from 'open';
 
-let port = Math.ceil(Math.random() * 2) + 3000;
+let PORT = Math.ceil(Math.random() * 2) + 3000;
 const server = net.createServer();
 
 server.listen(port);
@@ -33,12 +33,14 @@ app.use('/', (req, res) => {
     console.log(mac['Wi-Fi'][1].mac)
 })
 
-app.listen(port, () => {
+const server = app.listen(PORT, () => {
     console.log(`Server Running on port "${port}" on ip: "${mac['Wi-Fi'][1].address}:${port}"`);
     // open(`http://localhost:${port}`);
     console.log(` localhost:${port}`);
     console.log(` ${mac['Wi-Fi'][1].address}:${port}`);
     console.log('wait... browser is open');
-
+    console.log(server.address().address)
+    console.log(server.address().port)
     open(`http://${mac['Wi-Fi'][1].address}:${port}`);
 })
+server()
