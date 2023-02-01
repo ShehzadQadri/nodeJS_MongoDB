@@ -33,14 +33,14 @@ app.use('/', (req, res) => {
     console.log(mac['Wi-Fi'][1].mac)
 })
 
-const server = app.listen(PORT, () => {
+const serverListen = app.listen(PORT, () => {
     console.log(`Server Running on port "${port}" on ip: "${mac['Wi-Fi'][1].address}:${port}"`);
     // open(`http://localhost:${port}`);
     console.log(` localhost:${port}`);
     console.log(` ${mac['Wi-Fi'][1].address}:${port}`);
     console.log('wait... browser is open');
-    console.log(server.address().address)
-    console.log(server.address().port)
+    console.log(serverListen.address().address)
+    console.log(serverListen.address().port)
     open(`http://${mac['Wi-Fi'][1].address}:${port}`);
 })
-server()
+// server()
