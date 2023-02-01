@@ -4,10 +4,10 @@ import os from "os";
 import net from 'net';
 import open from 'open';
 
-let PORT = Math.ceil(Math.random() * 2) + 3000;
+let PORT = process.env.PORT || Math.ceil(Math.random() * 2) + 3000;
 const server = net.createServer();
 
-server.listen(port);
+server.listen(PORT);
 server.on('error', (err) => {
     console.log(`Port ${err.code} is not busy`);
     server.close();
@@ -34,13 +34,14 @@ app.use('/', (req, res) => {
 })
 
 const serverListen = app.listen(PORT, () => {
-    console.log(`Server Running on port "${port}" on ip: "${mac['Wi-Fi'][1].address}:${port}"`);
-    // open(`http://localhost:${port}`);
-    console.log(` localhost:${port}`);
-    console.log(` ${mac['Wi-Fi'][1].address}:${port}`);
+    console.log(mac)
+    // console.log(`Server Running on port "${PORT}" on ip: "${mac['Wi-Fi'][1].address}:${PORT}"`);
+    console.log(` localhost:${PORT}`);
+    // console.log(` ${mac['Wi-Fi'][1].address}:${PORT}`);
     console.log('wait... browser is open');
     console.log(serverListen.address().address)
     console.log(serverListen.address().port)
-    open(`http://${mac['Wi-Fi'][1].address}:${port}`);
+    // open(`http://localhost:${port}`);
+    // open(`http://${mac['Wi-Fi'][1].address}:${PORT}`);
 })
 // server()
